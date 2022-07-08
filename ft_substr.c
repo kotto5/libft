@@ -4,12 +4,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*s2;
 
-	if (start >= ft_strlen(s) || len == 0)//これ自働型変換？　strlenをunsigned int で返したいな。
-		return ("");
-	if (ft_strlen(s) < len)
-		s2 = calloc(sizeof(char), ft_strlen(s));
+	if (start > ft_strlen(s) || len == 0)//これ自働型変換？　strlenをunsigned int で返したいな。
+	{
+		s2 = calloc(1, 1);
+		return (s2);
+	}
+	if (ft_strlen(s) < len + start)
+		s2 = malloc(ft_strlen(s));
 	else
-		s2 = calloc(sizeof(char), len + 1);
+		s2 = malloc(len + 1);
 	if (s2 != NULL)
 		ft_strlcpy(s2, s + (int)start, len + 1);//これstart が3億とかunsigned で来てたらマイナスになりそう。。
 	else

@@ -7,7 +7,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		start;
 	
 	i = 0;
-	while (s1[i] && ft_strchr(set, s1[i]))
+	while (ft_strchr(set, s1[i]))
 		i++;
 	if (s1[i] == '\0')
 	{
@@ -16,13 +16,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	else
 		start = i;
-	printf("%d\n", start);
 	i = ft_strlen(s1) - 1;
-	printf("%d\n", i);
-	// printf("%s\n", ft_strchr(set, s1[i]));
-	while(ft_strchr(set, s1[i]) != NULL)
+	while(ft_strchr(set, s1[i]))
 		i--;
-	printf("%d\n", i);
 	s2 = ft_substr(s1, start, i - start + 1);
 	return (s2);
 }
