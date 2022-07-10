@@ -7,6 +7,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		start;
 	
 	i = 0;
+	if (set == NULL || s1 == NULL)
+		return (NULL);
 	while (ft_strchr(set, s1[i]))
 		i++;
 	if (s1[i] == '\0')

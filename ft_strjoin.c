@@ -3,12 +3,18 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*s3;
-
-	s3 = malloc(ft_strlen(s1) + ft_strlen(s2));
+	int		len1;
+	int		len2;
+	
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	s3 = malloc(len1 + len2);
 	if (s3 == NULL)
 		return (NULL);
-	ft_memmove(s3, s1, ft_strlen(s1) + 1);//if there is not 1, occurs error as if there are some data that isn't 0 after s3 end,
-	ft_memmove(s3 + ft_strlen(s3), s2, ft_strlen(s2) + 1);//this line's ft_strlen() have more nomber than s1.
+	ft_memmove(s3, s1, len1 + 1);//if there is not 1, occurs error as if there are some data that isn't 0 after s3 end,
+	ft_memmove(s3 + ft_strlen(s3), s2, len2 + 1);//this line's ft_strlen() have more nomber than s1.
 	return (s3);
 	//What make the difference when I use sizeof() and ft_strlen()?
 }

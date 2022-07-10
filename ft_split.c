@@ -6,46 +6,85 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 22:51:38 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/09 08:20:20 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/10 10:42:46 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int		count_split(const char *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
 	int		i;
 	int		j;
 	int		k;
-	int		ls[];
 	char	**nptr;
+	//int		start[];
+
+	if (c == '\0' || s == NULL)
+	{
+		nptr = (char **)malloc(sizeof (char **) * 1);
+		nptr[0] = ft_calloc(sizeof(char *), 1);
+		nptr[0] = "";
+		return (nptr);
+	}
+	k = 0;
+	i = 0;
+	j = 0;
+	nptr = malloc(sizeof(char **) * (count_split(s, c) + 1));
+	while (s[j] == c)
+	{
+		j++;
+	}
+	while(s[j])
+	{
+		k = j;
+		if (ft_strchr(&s[k], c) != NULL)
+		{
+			j = ft_strchr(&s[k], c) - s;
+			nptr[i++] = ft_substr(s, k, j - k);
+			while (s[j] == c)
+				j++;
+		}
+		else
+		{
+			while (s[j])
+				j++;
+			nptr[i] = ft_substr(s, k, j - k);
+			break;
+		}
+	}
+	nptr[count_split(s, c)] = 0;
+	return (nptr);
+}
+
+int	count_split(char const *s, char c)
+{
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	while (s[i])
+	while (s[j] == c)
+		j++;
+	while (s[j])
 	{
-		if (s[i] != c)
-		{
-			j++;
-			ft_strchr(&s[i], c)
-			while (s[i] != c)
-				i++;//kokode what time i was incrimented is length of string
-		}
 		i++;
-	}		
-	nptr = malloc(sizeof(char **) * (j));
-	i = 0;
-	while (i <= j)
-	{
-		nptr[i / 2] = ft_substr(s, ls[i], ls[i + 1] - ls[i]);
-		i += 2;
+		while(s[j] != c && s[j])
+			j++;
+		while(s[j] == c && s[j])
+			j++;
 	}
-	if (s[i - 1] != c)
-		nptr[j] = ft_substr(s, k, i);
-	return (nptr);
+	return (i);
 }
-//ls[x] : the index when appear c charactar in s string. if c is continue 
-//some times, ls[x] is appear c back one, ls[x + 1] contain end c;
-//
-//if x / 2 == 0; ls[i] hold the nomber substr start;
-//if x / 2 == 1; ls[i] hold the nomber substr end; 
+
+int	main(void)
+{
+	for (int i = 0; i < 1; i++)
+	{
+		printf("%s", ft_split((""), ' ')[i]);
+	}
+	printf("%d", count_split("", ' '));
+
+}
