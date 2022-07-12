@@ -9,15 +9,11 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (lst == NULL)
 		return (NULL);
-	ndptr = lst;
-	new_lst = ft_lstnew((f(ndptr -> content)));
+	new_lst = ft_lstnew((f(lst -> content)));
 	if (new_lst == NULL)
-	{
-		ft_lstclear(&new_lst, del);
 		return (NULL);
-	}
 	new_ndptr = new_lst;
-	ndptr = ndptr -> next;
+	ndptr = lst -> next;
 	while (ndptr != NULL)
 	{
 		buf = ft_lstnew((f(ndptr -> content)));
