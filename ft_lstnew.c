@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/12 00:03:34 by kakiba            #+#    #+#             */
+/*   Updated: 2022/07/12 00:03:40 by kakiba           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 t_list	*ft_lstnew(void *content)
@@ -10,7 +22,7 @@ t_list	*ft_lstnew(void *content)
 	else
 	{
 		ndptr -> content = content;
-		ndptr -> next    = NULL;
+		ndptr -> next = NULL;
 		return (ndptr);
 	}
 }

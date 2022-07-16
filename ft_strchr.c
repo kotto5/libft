@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/12 00:07:37 by kakiba            #+#    #+#             */
+/*   Updated: 2022/07/12 00:08:32 by kakiba           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+
 char	*ft_strchr(const char *s, int c)
 {
 	int		i;
@@ -7,10 +20,11 @@ char	*ft_strchr(const char *s, int c)
 	while (s[i])
 	{
 		if (s[i] == (char)c)
-			return(char *)(s + i);
+			return ((char *)(s + i));
 		i++;
 	}
 	if (s[i] == (char)c)
-		return(char *)(s + i);
-	return (NULL);//NULLにすると識別子NULLが定義されていませんってなる。なにこれ.NULLはstdioで定義されてるらしい。どゆこと？
+		return ((char *)(s + i));
+	return (NULL);
 }
+//NULLにすると識別子NULLが定義されていませんってなる。なにこれ.NULLはstdioで定義されてるらしい。どゆこと？

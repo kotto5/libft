@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/12 00:02:49 by kakiba            #+#    #+#             */
+/*   Updated: 2022/07/12 00:02:57 by kakiba           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
@@ -13,5 +25,4 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		ndptr = ndptr -> next;
 	}
 	*lst = NULL;
-	//lst = NULL;
 }

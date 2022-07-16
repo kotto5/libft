@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/12 00:03:20 by kakiba            #+#    #+#             */
+/*   Updated: 2022/07/12 09:09:15 by kakiba           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
@@ -9,15 +21,11 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (lst == NULL)
 		return (NULL);
-	ndptr = lst;
-	new_lst = ft_lstnew((f(ndptr -> content)));
+	new_lst = ft_lstnew((f(lst -> content)));
 	if (new_lst == NULL)
-	{
-		ft_lstclear(&new_lst, del);
 		return (NULL);
-	}
 	new_ndptr = new_lst;
-	ndptr = ndptr -> next;
+	ndptr = lst -> next;
 	while (ndptr != NULL)
 	{
 		buf = ft_lstnew((f(ndptr -> content)));
@@ -32,4 +40,3 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (new_lst);
 }
-

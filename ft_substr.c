@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/12 00:12:45 by kakiba            #+#    #+#             */
+/*   Updated: 2022/07/12 00:16:22 by kakiba           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*s2;
 
 	if (s == NULL)
 		return (NULL);
-	if (start >= ft_strlen(s) || len == 0)//これ自働型変換？　strlenをunsigned int で返したいな。
+	if (start >= ft_strlen(s) || len == 0)
 	{
 		s2 = calloc(1, 1);
 		if (s2 == NULL)
@@ -18,14 +30,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	else
 		s2 = malloc(len + 1);
 	if (s2 != NULL)
-		ft_strlcpy(s2, s + (int)start, len + 1);//これstart が3億とかunsigned で来てたらマイナスになりそう。。
+		ft_strlcpy(s2, s + (int)start, len + 1);
 	else
-		return (NULL);	
+		return (NULL);
 	return (s2);
 }
-
-// int	main(void)
-// {
-// 	printf("%s", ft_substr("abcde", 0, 2));
-// }
-//substrのstartはn文字目のnなのか、s[n]のnなのか。
+//これstart が3億とかunsigned で来てたらマイナスになりそう。。
+//これ自働型変換？　strlenをunsigned int で返したいな。

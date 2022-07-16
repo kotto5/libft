@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/12 00:11:08 by kakiba            #+#    #+#             */
+/*   Updated: 2022/07/12 00:11:15 by kakiba           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
@@ -20,19 +32,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	else
 		return (dest_len + src_len);
 }
-
-// size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-// {
-// 	unsigned int	i;
-
-// 	i = 0;
-// 	while (src[i] != '\0')
-// 	{
-// 		if(i < dstsize - 1)
-// 			dst[i] = src[i];
-// 		i++;
-// 	}
-// 	if (dstsize != 0)
-// 		dst[dstsize - 1] = '\0';
-// 	retutn (i);
-// }
