@@ -6,11 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 17:02:07 by kakiba            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/07/12 10:12:43 by kakiba           ###   ########.fr       */
-=======
-/*   Updated: 2022/07/12 10:00:02 by kakiba           ###   ########.fr       */
->>>>>>> c9b7b4d4e2078da2c6ba86beb6a35dc1c933a847
+/*   Updated: 2022/07/16 18:41:02 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +24,9 @@ char	*ft_itoa(int n)
 
 	if (n == INT_MIN)
 		return (ft_min());
-<<<<<<< HEAD
 	i = 1;
 	buf = n;
 	while (buf / 10 != 0)
-=======
-	}
-	i = 1;
-	buf = ABS(n);
-	while (buf >= 10)
->>>>>>> c9b7b4d4e2078da2c6ba86beb6a35dc1c933a847
 	{
 		buf = buf / 10;
 		i++;
@@ -57,10 +46,7 @@ char	*ft_itoa(int n)
 char	*minus_check(int *n, int *minus, int d)
 {
 	char	*s;
-<<<<<<< HEAD
 
-=======
->>>>>>> c9b7b4d4e2078da2c6ba86beb6a35dc1c933a847
 	if (*n < 0)
 	{
 		*minus = 1;
