@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 00:12:45 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/12 00:16:22 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/16 18:47:37 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	return (s2);
 }
-//これstart が3億とかunsigned で来てたらマイナスになりそう。。
-//これ自働型変換？　strlenをunsigned int で返したいな。

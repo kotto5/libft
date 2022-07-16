@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 00:01:25 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/12 00:02:33 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/16 18:45:31 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,3 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	else
 		ft_lstlast(*lst)-> next = new;
 }
-
-//		else
-//		{
-//			return ;
-			//*lst = ft_lstnew(NULL);
-			//(*lst) -> next = new;
-			//*lst = new;
-//		}
-//	}
-//	else
-//		return ;
