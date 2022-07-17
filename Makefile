@@ -25,6 +25,7 @@ ft_strchr.c\
 ft_strdup.c\
 ft_striteri.c\
 ft_strjoin.c\
+ft_strlcat.c\
 ft_strlcpy.c\
 ft_strlen.c\
 ft_strmapi.c\
@@ -35,7 +36,6 @@ ft_strtrim.c\
 ft_substr.c\
 ft_tolower.c\
 ft_toupper.c\
-ft_strlcat.c\
 ft_lstnew.c\
 ft_lstadd_front.c\
 ft_lstsize.c\
