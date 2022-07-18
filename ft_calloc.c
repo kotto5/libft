@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 23:57:14 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/17 21:10:50 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/18 09:13:51 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,56 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*memory;
+	void	*m;
 
-	if (size != 0)
+	if (size == 0 || count == 0)
+		m = malloc (size * count);
+	else
 	{
-		if((float)count <= (float)(SIZE_MAX / size))
+		if ((float)count <= (float)(__SIZE_MAX__ / size))
 		{
-			memory = malloc(size * count);
-			ft_bzero(memory, size * count);
+			m = malloc(size * count);
+			ft_bzero(m, size * count);
 		}
 		else
-			memory = malloc(size * count);
+			m = NULL;
 	}
-	else
-		memory = malloc(size * count);
-	return (memory);
+	return (m);
 }
 
-
+/*
 int	main(void)
 {
-	char *s;
+	int *s1;
+	int *s2;
+	size_t x = 1234;
+	size_t y = 10;
 
-	s = calloc(5, 5);
-	printf("%ld", sizeof(s));
-	
+	s1 = ft_calloc(sizeof(int), x);
+//	s1 = malloc(sizeof(int) * x);
+	printf("calloc()\n");
+	for(int i = 0; i < y; ++i)
+	{
+		printf("%p\n", s1 + i);
+		printf("%d\n", s1[i]);
+	}
+	free (s1);
+	// for(int i = 0; i < y; ++i)
+	// {
+	// 	printf("%d\n", s1[i]);
+	// }
+	s2 = calloc(sizeof(int), x);
+	printf("calloc()\n");
+	for(int i = 0; i < y; ++i)
+	{
+		printf("%p\n", s2 + i);
+		printf("%d\n", s2[i]);
+	}
+	free (s2);
+	// for(int i = 0; i < y; ++i)
+	// {
+	// 	printf("%d\n", s2[i]);
+	// }
 	return 0;
 }
+*/
