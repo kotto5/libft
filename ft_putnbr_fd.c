@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:27:03 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/17 10:28:58 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/18 09:22:00 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ void	ft_putnbr_fd(int n, int fd)
 
 	i = 1;
 	if (n == -2147483648)
-	{
 		write (fd, "-2147483648", 11);
-		return ;
-	}
 	else if (n < 0)
 	{
 		n = -n;
@@ -35,7 +32,7 @@ void	ft_putnbr_fd(int n, int fd)
 		n /= 10;
 		i *= 10;
 	}
-	while (i >= 1)
+	while (buf > 0)
 	{
 		c = buf / i + '0';
 		write (fd, &c, 1);
@@ -44,7 +41,7 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 }
 
-/*int	main(void)
+int	main(void)
 {
-	ft_putnbr_fd(INT_MAX, 1);
-}*/
+	ft_putnbr_fd(INT_MIN, 1);
+}

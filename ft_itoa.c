@@ -6,14 +6,14 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 17:02:07 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/16 18:41:02 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/18 09:24:02 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*minus_check(int *n, int *minus, int d);
-char	*ft_min(void);
+static char	*minus_check(int *n, int *minus, int d);
+static char	*ft_min(void);
 
 char	*ft_itoa(int n)
 {
@@ -43,7 +43,7 @@ char	*ft_itoa(int n)
 	return (s);
 }
 
-char	*minus_check(int *n, int *minus, int d)
+static char	*minus_check(int *n, int *minus, int d)
 {
 	char	*s;
 
@@ -62,7 +62,7 @@ char	*minus_check(int *n, int *minus, int d)
 	return (s);
 }
 
-char	*ft_min(void)
+static char	*ft_min(void)
 {
 	char	*s;
 
@@ -72,12 +72,3 @@ char	*ft_min(void)
 	ft_strlcpy(s, "-2147483648", 13);
 	return (s);
 }
-/*
-int	main(void)
-{
-//	printf("%s\n", itoa(-0));
-	char *s = ft_itoa(INT_MIN);
-	free (s);
-	printf("%s\n", ft_itoa(INT_MIN));
-	printf("%s\n", ft_itoa(9873249));
-}*/

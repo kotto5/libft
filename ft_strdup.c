@@ -6,13 +6,13 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 00:08:40 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/12 00:09:22 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/18 09:33:59 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dest, char const *s1);
+static char	*ft_strcpy(char *dest, char const *s1);
 
 char	*ft_strdup(const char *s1)
 {
@@ -27,7 +27,7 @@ char	*ft_strdup(const char *s1)
 	return (dest);
 }
 
-char	*ft_strcpy(char *dest, char const *s1)
+static char	*ft_strcpy(char *dest, char const *s1)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 00:11:08 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/17 19:31:31 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/18 09:15:26 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t			src_len;
 
 	if (dst == NULL && src != NULL)
-		return ft_strlen(src);
+		return (ft_strlen(src));
 	i = 0;
 	dest_len = ft_strlen(dst);
 	src_len = ft_strlen(src);

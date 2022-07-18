@@ -5,6 +5,7 @@
 #include <limits.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 
 // # define NULL	0
 // # define NULL	(void*)0

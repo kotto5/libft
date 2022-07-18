@@ -6,15 +6,15 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 22:51:38 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/16 18:46:39 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/18 09:17:53 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		count_split(const char *s, char c);
-void	check_split(char **nptr, int i);
-int		create_split(char **nptr, char const *s, char c);
+static int		count_split(const char *s, char c);
+static void		check_split(char **nptr, int i);
+static int		create_split(char **nptr, char const *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
@@ -29,7 +29,7 @@ char	**ft_split(char const *s, char c)
 	return (nptr);
 }
 
-int	create_split(char **nptr, char const *s, char c)
+static int	create_split(char **nptr, char const *s, char c)
 {
 	int		i;
 	int		j;
@@ -57,7 +57,7 @@ int	create_split(char **nptr, char const *s, char c)
 	return (i);
 }
 
-void	check_split(char **nptr, int i)
+static void	check_split(char **nptr, int i)
 {
 	int	j;
 
@@ -78,7 +78,7 @@ void	check_split(char **nptr, int i)
 	}
 }
 
-int	count_split(char const *s, char c)
+static int	count_split(char const *s, char c)
 {
 	int	i;
 	int	j;

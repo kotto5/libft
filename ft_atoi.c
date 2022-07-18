@@ -6,15 +6,15 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 23:51:25 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/17 20:57:07 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/18 09:33:32 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long int	ft_strtol(const char *nptr, char **endptr, int base);
-int			start_check(const char *nptr, int *base, int *judge_minus);
-int			index_check(char c, int base);
+static long int	ft_strtol(const char *nptr, char **endptr, int base);
+static int		start_check(const char *nptr, int *base, int *judge_minus);
+static int		index_check(char c, int base);
 
 int	ft_atoi(const char *str)
 {
@@ -24,7 +24,7 @@ int	ft_atoi(const char *str)
 	return ((int)(a));
 }
 
-long int	ft_strtol(const char *nptr, char **endptr, int base)
+static long int	ft_strtol(const char *nptr, char **endptr, int base)
 {
 	int					i;
 	int					judge_minus;
@@ -35,11 +35,10 @@ long int	ft_strtol(const char *nptr, char **endptr, int base)
 	i = start_check(nptr, &base, &judge_minus);
 	while (index_check(nptr[i], base) != -1)
 	{
-	//	printf("%d\n", index_check(nptr[i], base));
-		if ((sum <= (unsigned int long)(LONG_MAX - index_check(nptr[i], base)) / base))
+		if ((sum <= (unsigned int long)
+				(LONG_MAX - index_check(nptr[i], base)) / base))
 		{
 			sum = sum * base + index_check(nptr[i++], base);
-//			printf("%llu\n", sum);
 		}
 		else if (judge_minus == 1)
 			return (LONG_MAX);
@@ -51,7 +50,7 @@ long int	ft_strtol(const char *nptr, char **endptr, int base)
 	return (judge_minus * sum);
 }
 
-int	start_check(const char *nptr, int *base, int *judge_minus)
+static int	start_check(const char *nptr, int *base, int *judge_minus)
 {
 	int	i;
 
@@ -79,7 +78,7 @@ int	start_check(const char *nptr, int *base, int *judge_minus)
 	return (i);
 }
 
-int	index_check(char c, int base)
+static int	index_check(char c, int base)
 {
 	char	*str;
 
