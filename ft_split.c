@@ -6,15 +6,15 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 22:51:38 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/18 17:22:55 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/27 15:57:37 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		count_split(const char *s, char c);
-static void		check_split(char **nptr, int i);
-static int		create_split(char **nptr, char const *s, char c);
+static size_t	count_split(const char *s, char c);
+static size_t	check_split(char **nptr, char const *s, size_t i, size_t *end);
+static void		create_split(char **nptr, char const *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
@@ -22,66 +22,64 @@ char	**ft_split(char const *s, char c)
 
 	if (s == NULL)
 		return (NULL);
-	nptr = malloc(sizeof(char **) * (count_split(s, c) + 1));
+	nptr = ft_calloc(sizeof(char **), (count_split(s, c) + 1));
 	if (nptr == NULL)
 		return (NULL);
-	check_split(nptr, create_split(nptr, s, c));
+	create_split(nptr, s, c);
 	return (nptr);
 }
 
-static int	create_split(char **nptr, char const *s, char c)
+static void	create_split(char **nptr, char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		k;
+	size_t	i;
+	size_t	end;
+	size_t	start;
 
 	i = 0;
-	j = 0;
-	while (s[j])
+	start = 0;
+	while (s[start])
 	{
-		while (s[j] == c)
-			j++;
-		k = j;
-		if (s[k] && ft_strchr(&s[k], c) == NULL)
+		while (s[start] == c)
+			++start;
+		if (s[start] && ft_strchr(&s[start], c) == NULL)
 		{
-			nptr[i++] = ft_substr(s, k, ft_strlen(s) - k);
-			break ;
+			end = ft_strlen(s);
+			nptr[i] = ft_substr(s, start, ft_strlen(s) - start);
+			start = check_split(nptr, s, i++, &end);
 		}
-		else if (s[k])
+		else if (s[start])
 		{
-			j = ft_strchr(&s[k], c) - s;
-			nptr[i++] = ft_substr(s, k, j - k);
+			end = ft_strchr(&s[start], c) - s;
+			nptr[i] = ft_substr(s, start, end - start);
+			start = check_split(nptr, s, i++, &end);
 		}
 	}
-	nptr[i] = 0;
-	return (i);
+	if (nptr[i - 1] != NULL)
+		nptr[i] = 0;
 }
 
-static void	check_split(char **nptr, int i)
+static size_t	check_split(char **nptr, char const *s, size_t i, size_t *end)
 {
-	int	j;
-
-	j = i - 1;
-	while (j >= 0)
-	{
-		if (nptr[j] == NULL)
+	if (nptr[i] == NULL)
+	{	
+		while (i)
 		{
-			while (i >= 0)
-			{
-				free(nptr[i]);
-				nptr[i--] = NULL;
-			}
-			free(nptr);
-			nptr = NULL;
+			free(nptr[i]);
+			nptr[i--] = NULL;
 		}
-		j--;
+		free(nptr[i]);
+		nptr[i] = NULL;
+		free(nptr);
+		nptr = NULL;
+		*end = ft_strlen(s);
 	}
+	return (*end);
 }
 
-static int	count_split(char const *s, char c)
+static size_t	count_split(char const *s, char c)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
@@ -96,3 +94,9 @@ static int	count_split(char const *s, char c)
 	}
 	return (i);
 }
+/*
+int	main()
+{
+	printf("%s\n", ft_split("akiba,,kyo,,suke", ',')[0]);
+	printf("%s\n", ft_split(",,,,akiba,,kyo,,suke,,,", ',')[0]);
+}*/

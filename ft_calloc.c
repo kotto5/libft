@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 23:57:14 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/18 09:13:51 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/23 19:50:23 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,18 @@ void	*ft_calloc(size_t count, size_t size)
 	void	*m;
 
 	if (size == 0 || count == 0)
-		m = malloc (size * count);
-	else
 	{
-		if ((float)count <= (float)(__SIZE_MAX__ / size))
-		{
-			m = malloc(size * count);
-			ft_bzero(m, size * count);
-		}
-		else
-			m = NULL;
+		count = 1;
+		size = 1;
 	}
+	if (count <= __SIZE_MAX__ / size)
+	{
+		m = malloc(size * count);
+		if (m != NULL)
+			ft_bzero(m, size * count);
+	}
+	else
+		m = NULL;
 	return (m);
 }
 

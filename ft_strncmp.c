@@ -6,12 +6,11 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 00:11:43 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/17 18:59:55 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/18 16:23:08 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

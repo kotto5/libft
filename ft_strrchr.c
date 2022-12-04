@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 00:12:22 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/12 00:12:25 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/24 21:34:00 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
+	size_t	i;
+	size_t	len;
 	char	*ptr;
 
 	i = 0;
-	ptr = NULL;
-	while (s[i])
+	len = ft_strlen(s);
+	ptr = (char *)s;
+	while (len >= i)
 	{
-		if (s[i] == (char)c)
-			ptr = (char *)s + i;
+		if (ptr[len - i] == (char)c)
+			return (&ptr[len - i]);
 		i++;
 	}
-	if (s[i] == (char)c)
-		ptr = (char *)s + i;
-	return (ptr);
+	return (NULL);
 }
+
+//
+//int	main()
+//{
+//	printf("%s\n", strrchr("abc", 'b' + 256));
+//	printf("%s\n", ft_strrchr("abc", 'b' + 256));
+//}

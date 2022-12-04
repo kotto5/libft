@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 23:51:25 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/18 09:33:32 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/26 21:32:58 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,12 @@ static int		index_check(char c, int base);
 
 int	ft_atoi(const char *str)
 {
-	long int	a;
-
-	a = ft_strtol (str, (char **) NULL, 10);
-	return ((int)(a));
+	return ((int)(ft_strtol(str, (char **) NULL, 10)));
 }
 
 static long int	ft_strtol(const char *nptr, char **endptr, int base)
 {
-	int					i;
+	size_t				i;
 	int					judge_minus;
 	unsigned int long	sum;
 
@@ -37,9 +34,7 @@ static long int	ft_strtol(const char *nptr, char **endptr, int base)
 	{
 		if ((sum <= (unsigned int long)
 				(LONG_MAX - index_check(nptr[i], base)) / base))
-		{
 			sum = sum * base + index_check(nptr[i++], base);
-		}
 		else if (judge_minus == 1)
 			return (LONG_MAX);
 		else
@@ -52,15 +47,15 @@ static long int	ft_strtol(const char *nptr, char **endptr, int base)
 
 static int	start_check(const char *nptr, int *base, int *judge_minus)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
 		i++;
 	if (nptr[i] == '-')
 	{
-			*judge_minus = -1;
-			i++;
+		*judge_minus = -1;
+		i++;
 	}
 	else if (nptr[i] == '+')
 		i++;
@@ -80,7 +75,14 @@ static int	start_check(const char *nptr, int *base, int *judge_minus)
 
 static int	index_check(char c, int base)
 {
-	char	*str;
+	if (ft_isalnum(c) && '0' + base > c)
+		return (c - '0');
+	else if (ft_isalpha(ft_toupper(c)) && base > 10 && 'A' + base - 10 > c)
+		return (c - 'A' + 11);
+	else
+		return (-1);
+}
+/*	char	*str;
 
 	str = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	c = ft_toupper(c);
@@ -90,7 +92,7 @@ static int	index_check(char c, int base)
 		return (ft_strchr(str, c) - str);
 	else
 		return (-1);
-}
+		*/
 /*
 int main(void)
 {
@@ -104,6 +106,5 @@ int main(void)
 	printf("%d\n", atoi("18446744073709551617"));
 	printf("%d\n", ft_atoi("18446744073709551617"));
 	printf("%d\n", atoi("446744073709551618"));
-
- 	return 0;
- }*/
+return 0;
+}*/

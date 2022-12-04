@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 10:04:29 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/18 10:07:51 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/12/04 14:43:02 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <limits.h>
 # include <unistd.h>
 # include <string.h>
+# include <stdio.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -32,7 +34,7 @@ int		ft_isprint(int c);
 size_t	ft_strlen(const char *str);
 void	*ft_memset(void *buf, int ch, size_t n);
 void	ft_bzero(void *s, size_t n);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
@@ -69,5 +71,18 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+int		ft_printf(char *format, ...);
+void	output_format(char *format, va_list *ap, int *sum);
+int		filter(char *format, va_list *ap, int *sum);
+void	print_char(va_list *ap, int *sum);
+void	print_str(va_list *ap, int *sum);
+void	print_pointer(va_list *ap, int *sum);
+void	print_str(va_list *ap, int *sum);
+int		out_put_llnbr(long long n, int fd);
+int		ft_putllnbr_fd(int long long n, int fd);
+char	c_to_hex(int n, char c);
+int		ft_puthex_fd(unsigned long long n, int fd, char c);
+int		ft_hex_output(unsigned long long n, int fd, char c);
 
 #endif

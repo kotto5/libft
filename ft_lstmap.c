@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 00:03:20 by kakiba            #+#    #+#             */
-/*   Updated: 2022/07/12 09:09:15 by kakiba           ###   ########.fr       */
+/*   Updated: 2022/07/24 19:36:20 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,39 @@
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_lst;
-	t_list	*ndptr;
-	t_list	*new_ndptr;
 	t_list	*buf;
 
-	if (lst == NULL)
+	if ((lst == NULL) || (f == NULL))
 		return (NULL);
-	new_lst = ft_lstnew((f(lst -> content)));
-	if (new_lst == NULL)
-		return (NULL);
-	new_ndptr = new_lst;
-	ndptr = lst -> next;
-	while (ndptr != NULL)
-	{
-		buf = ft_lstnew((f(ndptr -> content)));
+	new_lst = NULL;
+	while (lst)
+	{	
+		buf = ft_lstnew((f(lst -> content)));
 		if (buf == NULL)
 		{
 			ft_lstclear(&new_lst, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&new_ndptr, buf);
-		ndptr = ndptr -> next;
-		new_ndptr = new_ndptr -> next;
+		ft_lstadd_back(&new_lst, buf);
+		lst = lst -> next;
 	}
 	return (new_lst);
 }
+
+/*
+void	*lstmap_f(void *content) {
+	(void)content;
+	return ("OK !");
+}
+
+int	main()
+{
+	t_list	*l = ft_lstnew(strdup(" 1 2 3 "));
+	t_list	*ret;
+
+	l->next = ft_lstnew(strdup("ss"));
+	l->next->next = ft_lstnew(strdup("-_-"));
+	ret = ft_lstmap(l, lstmap_f, NULL);
+	printf("%p\n", ret);
+	printf("%s\n", ret->content);
+}*/
