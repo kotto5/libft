@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_dlstdelone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 00:02:41 by kakiba            #+#    #+#             */
-/*   Updated: 2023/01/19 15:16:26 by kakiba           ###   ########.fr       */
+/*   Created: 2022/12/10 15:18:43 by kakiba            #+#    #+#             */
+/*   Updated: 2022/12/13 14:04:41 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
-{
-	if (lst == NULL || new == NULL)
-		return ;
-	ft_lstlast(new)-> next = (*lst);
-	*lst = new;
-}
+//del　が無ければlst をフリーするだけ
+//del が無い＝構造体はスタック領域のもの
 
-// void	ft_lstadd_front(t_list **lst, t_list *new)
-// {
-// 	if (lst == NULL || new == NULL)
-// 		return ;
-// 	if (*lst == NULL)
-// 		new -> next = NULL;
-// 	else
-// 		ft_lstlast(new)-> next = (*lst);
-// 	*lst = new;
-// }
+void	ft_dlstdelone(t_dlist *lst, void (*del)(void *))
+{
+	if (lst == NULL)
+		return ;
+	if (del != NULL)
+		del(&lst -> content);
+	free(lst);
+}

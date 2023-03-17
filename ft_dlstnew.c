@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_dlstnew.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 00:02:41 by kakiba            #+#    #+#             */
-/*   Updated: 2023/01/19 15:16:26 by kakiba           ###   ########.fr       */
+/*   Created: 2022/12/10 11:33:11 by kakiba            #+#    #+#             */
+/*   Updated: 2022/12/15 15:32:55 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
-{
-	if (lst == NULL || new == NULL)
-		return ;
-	ft_lstlast(new)-> next = (*lst);
-	*lst = new;
-}
+//if content is NULL OK
 
-// void	ft_lstadd_front(t_list **lst, t_list *new)
-// {
-// 	if (lst == NULL || new == NULL)
-// 		return ;
-// 	if (*lst == NULL)
-// 		new -> next = NULL;
-// 	else
-// 		ft_lstlast(new)-> next = (*lst);
-// 	*lst = new;
-// }
+t_dlist	*ft_dlstnew(int content)
+{
+	t_dlist	*ndptr;
+
+	ndptr = malloc(sizeof(t_dlist));
+	if (!ndptr)
+		return (NULL);
+	ndptr -> content = content;
+	ndptr -> times = 0;
+	ndptr -> i_done = 0;
+	ndptr -> prev = NULL;
+	ndptr -> next = NULL;
+	return (ndptr);
+}
